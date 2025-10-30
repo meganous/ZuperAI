@@ -30,9 +30,9 @@ if "selected_model" not in st.session_state:
 
 # Define model details
 models = {
-    "llama-3.1-8b-instant": {"name": "llama-3.1-8b-instant", "tokens": 8192, "developer": "Meta"},
-    "llama-3.3-70b-versatile": {"name": "LLaMA3.3-70b-versatile", "tokens": 128000, "developer": "Meta"},
-    "qwen/qwen3-32b": {"name": "qwen/qwen3-32b", "tokens": 40000, "developer": "Qwen"},
+    "llama-3.1-8b-instant": {"name": "LLaMA-Small", "tokens": 8192, "developer": "Meta"},
+    "llama-3.3-70b-versatile": {"name": "LLaMA-Large", "tokens": 128000, "developer": "Meta"},
+    "qwen/qwen3-32b": {"name": "Qwen-Think", "tokens": 40000, "developer": "Qwen"},
 }
 
 # Layout for model selection and max_tokens slider
