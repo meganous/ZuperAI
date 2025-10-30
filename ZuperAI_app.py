@@ -14,7 +14,7 @@ def icon(emoji: str):
     )
 
 
-st.logo("https://assets.zyrosite.com/cdn-cgi/image/format=auto,w=176,fit=crop,q=95/Aq2oX4vwaKulvNM1/img-20240902-wa0043-removebg-preview-1-A3QOWQv4yxc8XQ8Y.png")
+st.logo("https://assets.zyrosite.com/cdn-cgi/image/format=auto,w=176,fit=crop,q=95/Aq2oX4vwaKulvNM1/img-20240902-wa0043-removebg-preview-1-A3QOWQv4yxc8XQ8Y.png",size='large')
 st.subheader("Lightweight Opensource Model Chatbot Demo Powered by ZuperAI", divider="grey", anchor=False)
 
 client = Groq(
