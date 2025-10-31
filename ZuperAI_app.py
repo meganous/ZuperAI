@@ -105,7 +105,7 @@ model_option = st.sidebar.selectbox(
 st.markdown(
     """
 This is the input data to the AI. 
-  {
+  /n
     "transaction_id": "TXN001",
     "account_id": "ACC1001",
     "date": "2025-10-29",
@@ -113,8 +113,8 @@ This is the input data to the AI.
     "amount": 8500.00,
     "type": "Credit",
     "balance_after": 158230.45
-  },
-  {
+  
+  /n
     "transaction_id": "TXN002",
     "account_id": "ACC1001",
     "date": "2025-10-28",
@@ -122,8 +122,7 @@ This is the input data to the AI.
     "amount": -2500.00,
     "type": "Debit",
     "balance_after": 149730.45
-  },
-  {
+  /n
     "transaction_id": "TXN003",
     "account_id": "ACC1002",
     "date": "2025-10-27",
@@ -131,8 +130,7 @@ This is the input data to the AI.
     "amount": 120.22,
     "type": "Credit",
     "balance_after": 98050.22
-  },
-  {
+  /n
     "transaction_id": "TXN004",
     "account_id": "ACC1003",
     "date": "2025-10-25",
@@ -140,8 +138,7 @@ This is the input data to the AI.
     "amount": -12000.00,
     "type": "Debit",
     "balance_after": 45890.73
-  },
-  {
+  /n
     "transaction_id": "TXN005",
     "account_id": "ACC1004",
     "date": "2025-10-29",
