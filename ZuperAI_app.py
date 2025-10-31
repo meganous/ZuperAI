@@ -25,11 +25,12 @@ client = Groq(
 # Initialize chat history and selected model
 if "messages" not in st.session_state:
     st.session_state.messages = [
-    {"role": "system", "content": "You are a helpful assistant for NSSF, Uganda."}
+    {"role": "system", "content": "You are a helpful assistant for ZuperAI"}
     ]
     st.session_state.context_added = True
 
 context_data = """
+You are a helpful assistant for ZuperAI. Your priority should be to answer from the following data.
 Transaction 
   {
     "transaction_id": "TXN001",
@@ -124,6 +125,7 @@ max_tokens=max_tokens_range
 
 # Display chat messages from history on app rerun
 for message in st.session_state.messages:
+  if msg["role"] not in ["system"]:
     avatar = '🤖' if message["role"] == "assistant" else '👨‍💻'
     with st.chat_message(message["role"], avatar=avatar):
         st.markdown(message["content"])
