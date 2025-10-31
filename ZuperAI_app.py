@@ -102,7 +102,7 @@ model_option = st.sidebar.selectbox(
         format_func=lambda x: models[x]["name"],
         index= 0 # Default to Llama Small
     )
-st.sidebar.markdown(
+st.markdown(
     """
 This is the input data to the AI. 
   {
