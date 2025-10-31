@@ -125,7 +125,7 @@ max_tokens=max_tokens_range
 
 # Display chat messages from history on app rerun
 for message in st.session_state.messages:
-  if msg["role"] not in ["system"]:
+  if message["role"] not in ["system"]:
     avatar = '🤖' if message["role"] == "assistant" else '👨‍💻'
     with st.chat_message(message["role"], avatar=avatar):
         st.markdown(message["content"])
