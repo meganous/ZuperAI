@@ -21,8 +21,15 @@ client = Groq(
     api_key=st.secrets["GROQ_API_KEY"],
 )
 
+
+# Initialize chat history and selected model
+if "messages" not in st.session_state:
+    st.session_state.messages = [
+    {"role": "system", "content": "You are a helpful assistant for NSSF, Uganda."}
+    ]
+    st.session_state.context_added = True
+
 context_data = """
-You are a helpful assistant for ZuperAI to answer from the following data whenever possible.
 Transaction 
   {
     "transaction_id": "TXN001",
@@ -72,12 +79,6 @@ Transaction
 
 """
 
-# Initialize chat history and selected model
-if "messages" not in st.session_state:
-    st.session_state.messages = [
-    {"role": "system", "content": "You are a helpful assistant for NSSF, Uganda."}
-    ]
-    st.session_state.context_added = True
 
 if "selected_model" not in st.session_state:
     st.session_state.selected_model = None
