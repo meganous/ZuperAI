@@ -21,17 +21,71 @@ client = Groq(
     api_key=st.secrets["GROQ_API_KEY"],
 )
 
+context_data = """
+You are a helpful assistant for ZuperAI to answer from the following data whenever possible.
+Transaction 
+  {
+    "transaction_id": "TXN001",
+    "account_id": "ACC1001",
+    "date": "2025-10-29",
+    "description": "Client payment received",
+    "amount": 8500.00,
+    "type": "Credit",
+    "balance_after": 158230.45
+  },
+  {
+    "transaction_id": "TXN002",
+    "account_id": "ACC1001",
+    "date": "2025-10-28",
+    "description": "Office rent payment",
+    "amount": -2500.00,
+    "type": "Debit",
+    "balance_after": 149730.45
+  },
+  {
+    "transaction_id": "TXN003",
+    "account_id": "ACC1002",
+    "date": "2025-10-27",
+    "description": "Interest credit",
+    "amount": 120.22,
+    "type": "Credit",
+    "balance_after": 98050.22
+  },
+  {
+    "transaction_id": "TXN004",
+    "account_id": "ACC1003",
+    "date": "2025-10-25",
+    "description": "Employee salary disbursement",
+    "amount": -12000.00,
+    "type": "Debit",
+    "balance_after": 45890.73
+  },
+  {
+    "transaction_id": "TXN005",
+    "account_id": "ACC1004",
+    "date": "2025-10-29",
+    "description": "Stock dividend received",
+    "amount": 4500.00,
+    "type": "Credit",
+    "balance_after": 312450.67
+  }
+
+"""
+
 # Initialize chat history and selected model
 if "messages" not in st.session_state:
-    st.session_state.messages = []
+    st.session_state.messages = [
+    {"role": "system", "content": "You are a helpful assistant for NSSF, Uganda."}
+    ]
+    st.session_state.context_added = True
 
 if "selected_model" not in st.session_state:
     st.session_state.selected_model = None
 
 # Define model details
 models = {
-    "llama-3.1-8b-instant": {"name": "LLaMA-Small", "tokens": 8192, "developer": "Meta"},
-    "llama-3.3-70b-versatile": {"name": "LLaMA-Large", "tokens": 128000, "developer": "Meta"},
+    "llama-3.1-8b-instant": {"name": "LLaMA-small", "tokens": 8192, "developer": "Meta"},
+    "llama-3.3-70b-versatile": {"name": "LLaMA-large", "tokens": 32768, "developer": "Meta"},
     "qwen/qwen3-32b": {"name": "Qwen-Think", "tokens": 40000, "developer": "Qwen"},
 }
 
@@ -44,7 +98,7 @@ model_option = st.sidebar.selectbox(
         "Choose a model:",
         options=list(models.keys()),
         format_func=lambda x: models[x]["name"],
-        index= 2 # Default to qwen
+        index= 0 # Default to Llama Small
     )
 
 # Detect model change and clear chat history if model has changed
@@ -80,6 +134,11 @@ def generate_chat_responses(chat_completion) -> Generator[str, None, None]:
         if chunk.choices[0].delta.content:
             yield chunk.choices[0].delta.content
 
+if not any(m.get("role") == "system_data" for m in st.session_state.messages):
+    st.session_state.messages.append(
+        {"role": "system", "content": f"Reference Information:\n{context_data}"}
+    ) 
+    st.session_state.context_added = True
 
 if prompt := st.chat_input("Enter your prompt here..."):
     st.session_state.messages.append({"role": "user", "content": prompt})
