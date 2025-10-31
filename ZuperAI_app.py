@@ -102,6 +102,56 @@ model_option = st.sidebar.selectbox(
         format_func=lambda x: models[x]["name"],
         index= 0 # Default to Llama Small
     )
+st.sidebar.markdown(
+    """
+This is the input data to the AI. 
+  {
+    "transaction_id": "TXN001",
+    "account_id": "ACC1001",
+    "date": "2025-10-29",
+    "description": "Client payment received",
+    "amount": 8500.00,
+    "type": "Credit",
+    "balance_after": 158230.45
+  },
+  {
+    "transaction_id": "TXN002",
+    "account_id": "ACC1001",
+    "date": "2025-10-28",
+    "description": "Office rent payment",
+    "amount": -2500.00,
+    "type": "Debit",
+    "balance_after": 149730.45
+  },
+  {
+    "transaction_id": "TXN003",
+    "account_id": "ACC1002",
+    "date": "2025-10-27",
+    "description": "Interest credit",
+    "amount": 120.22,
+    "type": "Credit",
+    "balance_after": 98050.22
+  },
+  {
+    "transaction_id": "TXN004",
+    "account_id": "ACC1003",
+    "date": "2025-10-25",
+    "description": "Employee salary disbursement",
+    "amount": -12000.00,
+    "type": "Debit",
+    "balance_after": 45890.73
+  },
+  {
+    "transaction_id": "TXN005",
+    "account_id": "ACC1004",
+    "date": "2025-10-29",
+    "description": "Stock dividend received",
+    "amount": 4500.00,
+    "type": "Credit",
+    "balance_after": 312450.67
+  }
+    """
+)
 
 # Detect model change and clear chat history if model has changed
 if st.session_state.selected_model != model_option:
