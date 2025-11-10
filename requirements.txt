@@ -1,2 +1,5 @@
 groq
 streamlit
+tabulate
+langchain_experimen
+langchain
