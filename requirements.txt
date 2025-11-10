@@ -1,4 +1,4 @@
 groq
 streamlit
-langchain_experimen
+langchain_experimental
 langchain
