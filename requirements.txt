@@ -1,4 +1,3 @@
-tabulate
 groq
 streamlit
 langchain_experimen
