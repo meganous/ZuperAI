@@ -3,3 +3,4 @@ streamlit
 langchain_experimental
 langchain
 tabulate
+langchain_groq
